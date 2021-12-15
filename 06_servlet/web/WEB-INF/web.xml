@@ -18,7 +18,7 @@
         <!--    servlet-name标签 servlet程序的别名（一般为类名）    -->
         <servlet-name>HelloServlet</servlet-name>
         <!--    servlet-class是servlet的全类名    -->
-        <servlet-class>com.pearz.servlet.HelloServlet</servlet-class>
+        <servlet-class>com.pearz1.hellohervlet.HelloServlet</servlet-class>
 
         <!--    init=param是初始化参数    -->
         <init-param>
@@ -30,23 +30,23 @@
     </servlet>
     <servlet>
         <servlet-name>HelloServlet2</servlet-name>
-        <servlet-class>com.pearz.servlet.HelloServlet2</servlet-class>
+        <servlet-class>com.pearz1.hellohervlet.HelloServlet2</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HelloServlet3</servlet-name>
-        <servlet-class>com.pearz.servlet.HelloServlet3</servlet-class>
+        <servlet-class>com.pearz1.hellohervlet.HelloServlet3</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ContextServlet</servlet-name>
-        <servlet-class>com.pearz.servlet.ContextServlet</servlet-class>
+        <servlet-class>com.pearz2.servletcontext.ContextServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ContextServlet1</servlet-name>
-        <servlet-class>com.pearz.servlet.ContextServlet1</servlet-class>
+        <servlet-class>com.pearz2.servletcontext.ContextServlet1</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ContextServlet2</servlet-name>
-        <servlet-class>com.pearz.servlet.ContextServlet2</servlet-class>
+        <servlet-class>com.pearz2.servletcontext.ContextServlet2</servlet-class>
     </servlet>
 
     <!--  servlet-mapping标签给servlet程序配置访问地址  -->

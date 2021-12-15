@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>RequestAPIServlet</servlet-name>
-        <servlet-class>com.pearz.servlet.RequestAPIServlet</servlet-class>
+        <servlet-class>com.pearz1.requestapi.RequestAPIServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RequestAPIServlet</servlet-name>
@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>ParameterServlet</servlet-name>
-        <servlet-class>com.pearz.servlet.ParameterServlet</servlet-class>
+        <servlet-class>com.pearz2.paramter.ParameterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ParameterServlet</servlet-name>
@@ -24,7 +24,7 @@
 
     <servlet>
         <servlet-name>Servlet1</servlet-name>
-        <servlet-class>com.pearz.servlet.Servlet1</servlet-class>
+        <servlet-class>com.pearz3.dispatcher.Servlet1</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet1</servlet-name>
@@ -33,7 +33,7 @@
 
     <servlet>
         <servlet-name>Servlet2</servlet-name>
-        <servlet-class>com.pearz.servlet.Servlet2</servlet-class>
+        <servlet-class>com.pearz3.dispatcher.Servlet2</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet2</servlet-name>
@@ -42,7 +42,7 @@
 
     <servlet>
         <servlet-name>ToC</servlet-name>
-        <servlet-class>com.pearz.servlet.ToC</servlet-class>
+        <servlet-class>com.pearz6.toclient.ToC</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ToC</servlet-name>
@@ -51,7 +51,7 @@
 
     <servlet>
         <servlet-name>ResponseIOServlet</servlet-name>
-        <servlet-class>com.pearz.servlet.ResponseIOServlet</servlet-class>
+        <servlet-class>com.pearz5.io.ResponseIOServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResponseIOServlet</servlet-name>
@@ -60,7 +60,7 @@
 
     <servlet>
         <servlet-name>Response1</servlet-name>
-        <servlet-class>com.pearz.servlet.Response1</servlet-class>
+        <servlet-class>com.pearz4.response.Response1</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Response1</servlet-name>
@@ -69,7 +69,7 @@
 
     <servlet>
         <servlet-name>Response2</servlet-name>
-        <servlet-class>com.pearz.servlet.Response2</servlet-class>
+        <servlet-class>com.pearz4.response.Response2</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Response2</servlet-name>
