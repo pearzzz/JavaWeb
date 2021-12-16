@@ -25,24 +25,29 @@ public class RegistServlet extends HttpServlet {
         String email = req.getParameter("email");
         String code = req.getParameter("code");
 
+        req.setAttribute("username", username);
+        req.setAttribute("email", email);
+
         //2、检查 验证码是否正确  === 写死,要求验证码为:bnbnp
         if ("bnbnp".equalsIgnoreCase(code)) {
             //3、检查 用户名是否可用
             if (userService.existsUsername(username)) {
+                req.setAttribute("msg", "用户名已存在");
                 System.out.println("用户名[" + username + "]已存在!");
                 //跳回注册页面
-                req.getRequestDispatcher("/pages/user/regist.html").forward(req, resp);
+                req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
             } else {
                 //可用
                  //调用Sservice保存到数据库
                 userService.registUser(new User(null, username, password, email));
 
-                //跳到注册成功页面 regist_success.html
-                req.getRequestDispatcher("/pages/user/regist_success.html").forward(req, resp);
+                //跳到注册成功页面 regist_success.jsp
+                req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req, resp);
             }
         } else {
+            req.setAttribute("msg", "验证码错误");
             System.out.println("验证码[" + code + "]错误");
-            req.getRequestDispatcher("/pages/user/regist.html").forward(req, resp);
+            req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
         }
     }
 }

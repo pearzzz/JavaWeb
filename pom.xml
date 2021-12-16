@@ -13,6 +13,7 @@
         <module>bookstore</module>
         <module>book</module>
         <module>09_EL_JSTL</module>
+        <module>13_cookie_session</module>
     </modules>
 
     <properties>
