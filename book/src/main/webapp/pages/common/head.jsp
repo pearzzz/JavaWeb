@@ -15,6 +15,8 @@
         + request.getServerPort()
         + request.getContextPath()
         + "/";
+
+    request.setAttribute("basePath", basePath);
 %>
 
 <!--写base标签，永远固定相对路径跳转的结果-->

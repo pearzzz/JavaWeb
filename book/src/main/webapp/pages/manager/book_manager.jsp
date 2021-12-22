@@ -30,15 +30,15 @@
 
         <div id="main">
             <table>
-                <c:forEach items="${requestScope.books}" var="book">
+                <c:forEach items="${requestScope.page.items}" var="book">
                     <tr>
                         <td>${book.name}</td>
                         <td>${book.price}</td>
                         <td>${book.author}</td>
                         <td>${book.sales}</td>
                         <td>${book.stock}</td>
-                        <td><a href="manager/bookServlet?action=getBook&id=${book.id}">修改</a></td>
-                        <td><a href="manager/bookServlet?action=delete&id=${book.id}" class="deleteClass">删除</a></td>
+                        <td><a href="manager/bookServlet?action=getBook&id=${book.id}&pageNo=${requestScope.page.pageNo}">修改</a></td>
+                        <td><a href="manager/bookServlet?action=delete&id=${book.id}&pageNo=${requestScope.page.pageNo}" class="deleteClass">删除</a></td>
                     </tr>
                 </c:forEach>
 
@@ -47,11 +47,15 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>                   
                     <td></td>
-                    <td><a href="pages/manager/book_edit.jsp">添加图书</a></td>
+                    <td></td>
+                    <td><a href="pages/manager/book_edit.jsp?pageNo=${ requestScope.page.pageTotal }">添加图书</a></td>
                 </tr>
             </table>
+
+            <%--静态包含分页条--%>
+            <%@include file="/pages/common/page_nav.jsp"%>
+
         </div>
 
         <%--静态包含页脚内容--%>

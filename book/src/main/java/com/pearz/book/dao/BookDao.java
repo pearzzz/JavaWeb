@@ -44,4 +44,37 @@ public interface BookDao {
      * @return: java.util.List<com.pearz.book.pojo.Book> 返回所有书组成的list列表
     */
     public List<Book> queryBook();
+
+    /**
+     * TODO 查询共多少条书籍信息
+     * @param
+     * @return: java.lang.Integer
+    */
+    public Integer queryForPageTotalCount();
+
+    /**
+     * TODO 查询当前页的书籍信息
+     * @param begin
+     * @param pageSize
+     * @return: java.util.List<com.pearz.book.pojo.Book>
+    */
+    public List<Book> queryForPageItems(int begin, int pageSize);
+
+    /**
+     * TODO 按价格查询共多少条书籍信息
+     * @param min
+     * @param max
+     * @return: java.lang.Integer
+    */
+    public Integer queryForPageTotalCountByPrice(int min, int max);
+
+    /**
+     * TODO 按价格查询当前页的书籍信息
+     * @param begin
+     * @param pageSize
+     * @param min
+     * @param max
+     * @return: java.util.List<com.pearz.book.pojo.Book>
+    */
+    public List<Book> queryForPageItemsByPrice(int begin, int pageSize, int min, int max);
 }
