@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
+
 /**
  * @Description
  * @Author pearz
@@ -22,6 +24,13 @@ import java.lang.reflect.Method;
 public class UserServlet extends BaseServlet {
 
     private UserService userService = new UserServiceImpl();
+
+    protected void loginout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //1、销毁Session中用户登陆的信息/销毁Session
+        req.getSession().invalidate();
+        //2、重定向到首页
+        resp.sendRedirect(req.getContextPath());
+    }
 
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //  1、获取请求的参数
@@ -39,12 +48,18 @@ public class UserServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         } else {
             //登陆成功
+            req.getSession().setAttribute("user", user);
             //跳转登陆成功页面login_success.html
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
     }
 
     protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1、获取Session中的验证码
+        String token = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        //2、删除Session中的验证码
+        req.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
+
         //1、获取请求的参数
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -57,7 +72,7 @@ public class UserServlet extends BaseServlet {
         req.setAttribute("email", email);
 
         //2、检查 验证码是否正确  === 写死,要求验证码为:bnbnp
-        if ("bnbnp".equalsIgnoreCase(code)) {
+        if (token != null && token.equalsIgnoreCase(code)) {
             //3、检查 用户名是否可用
             if (userService.existsUsername(username)) {
                 req.setAttribute("msg", "用户名已存在");

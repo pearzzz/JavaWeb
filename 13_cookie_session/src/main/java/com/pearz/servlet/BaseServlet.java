@@ -1,4 +1,4 @@
-package com.pearz.book.web;
+package com.pearz.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
