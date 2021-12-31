@@ -6,11 +6,22 @@
         <title>会员注册页面</title>
 
         <%--静态包含 base标签、css样式、jQuery文件--%>
-        <%@include file="/pages/common/head.jsp"%>
+        <%@include file="/pages/common/head.jsp" %>
 
         <script type="text/javascript">
             // 页面加载完成之后
             $(function () {
+
+                $("#username").blur(function () {
+                    var username = this.value;
+
+                    $.getJSON("http://localhost:8080/book/userServlet",
+                        "action=ajaxExitsUsername&username=" + username, function (data) {
+                            if (data.existsUsername) {
+                                $("span.errorMsg").text("用户名已存在！");
+                            }
+                        })
+                })
 
                 //1、给验证码图片绑定单击事件
                 $("#kaptcha").click(function () {
@@ -149,7 +160,8 @@
                                 <br/>
                                 <label>验证码：</label>
                                 <input class="itxt" type="text" name="code" style="width: 80px;" id="code"/>
-                                <img id="kaptcha" alt="" src="kaptcha.jpg" style="float: right; margin-right: 40px; width: 110px; height: 30px">
+                                <img id="kaptcha" alt="" src="kaptcha.jpg"
+                                     style="float: right; margin-right: 40px; width: 110px; height: 30px">
                                 <br/>
                                 <br/>
                                 <input type="submit" value="注册" id="sub_btn"/>
@@ -162,6 +174,6 @@
         </div>
 
         <%--静态包含页脚内容--%>
-        <%@include file="/pages/common/footer.jsp"%>
+        <%@include file="/pages/common/footer.jsp" %>
     </body>
 </html>

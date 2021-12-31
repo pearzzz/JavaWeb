@@ -1,5 +1,6 @@
 package com.pearz.book.web;
 
+import com.google.gson.Gson;
 import com.pearz.book.pojo.User;
 import com.pearz.book.service.UserService;
 import com.pearz.book.service.impl.UserServiceImpl;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
@@ -52,6 +55,20 @@ public class UserServlet extends BaseServlet {
             //跳转登陆成功页面login_success.html
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
+    }
+
+    protected void ajaxExitsUsername(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String username = req.getParameter("username");
+
+        boolean existsUsername = userService.existsUsername(username);
+
+        Map<String, Object> hashMap = new HashMap<String, Object>();
+        hashMap.put("existsUsername", existsUsername);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(hashMap);
+
+        resp.getWriter().write(json);
     }
 
     protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
